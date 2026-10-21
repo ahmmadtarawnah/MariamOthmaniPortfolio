@@ -1,0 +1,589 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MARIAM OTHMANI — DESIGN SYSTEM
+   Warm ivory · deep plum · champagne gold
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --bg: #faf6f1;
+  --bg-alt: #f3ebe1;
+  --bg-card: #fffcf8;
+  --bg-deep: #241722;
+  --bg-deep-2: #33202f;
+
+  /* Ink */
+  --ink: #2c2127;
+  --ink-soft: #6f6068;
+  --ink-faint: #9b8d94;
+  --ink-invert: #f7efe6;
+  --ink-invert-soft: #cbb6bf;
+
+  /* Accents */
+  --gold: #c2a05c;
+  --gold-light: #e6d3a8;
+  --gold-deep: #9c7c3c;
+  --rose: #a96c83;
+  --rose-light: #d3a3b3;
+  --plum: #5a3450;
+
+  /* Lines & shadow */
+  --line: rgba(44, 33, 39, 0.1);
+  --line-strong: rgba(44, 33, 39, 0.18);
+  --line-invert: rgba(247, 239, 230, 0.14);
+  --shadow-sm: 0 1px 2px rgba(44, 33, 39, 0.05), 0 4px 14px rgba(44, 33, 39, 0.05);
+  --shadow-md: 0 2px 6px rgba(44, 33, 39, 0.06), 0 16px 40px rgba(44, 33, 39, 0.09);
+  --shadow-lg: 0 6px 18px rgba(44, 33, 39, 0.08), 0 32px 70px rgba(44, 33, 39, 0.14);
+
+  /* Rhythm */
+  --radius: 18px;
+  --radius-lg: 28px;
+  --nav-h: 76px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-bg-card: var(--bg-card);
+  --color-bg-deep: var(--bg-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-invert: var(--ink-invert);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-deep: var(--gold-deep);
+  --color-rose: var(--rose);
+  --color-plum: var(--plum);
+  --color-line: var(--line);
+
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-jost), system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+  background: var(--bg);
+  /* `clip`, not `hidden`: it contains stray horizontal overflow without
+     turning <html> into a scroll container of its own. */
+  overflow-x: clip;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-jost), system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+/* Arabic typography swap */
+html[dir="rtl"] body {
+  font-family: var(--font-tajawal), system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+html[dir="rtl"] .font-display {
+  font-family: var(--font-messiri), var(--font-tajawal), serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Always-latin helper (emails, handles) */
+.latin {
+  font-family: var(--font-jost), system-ui, sans-serif;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+::selection {
+  background: var(--gold-light);
+  color: var(--ink);
+}
+
+/* ---------- Scrollbar ----------
+   Hidden on purpose. A classic scrollbar paints its gutter in the page's own
+   background colour, which reads as a bright stripe down the edge of every
+   dark section (and lands on the left in RTL). The gold progress line under
+   the navbar carries the scroll position instead. */
+
+html {
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* ============================================================
+   TYPE SCALE HELPERS
+   ============================================================ */
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold-deep);
+}
+
+html[dir="rtl"] .eyebrow {
+  letter-spacing: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.h-xl {
+  font-size: clamp(2.6rem, 7.5vw, 5.6rem);
+  line-height: 1.02;
+}
+.h-lg {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.1;
+}
+.h-md {
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+}
+
+html[dir="rtl"] .h-xl {
+  line-height: 1.18;
+  font-size: clamp(2.2rem, 6.4vw, 4.8rem);
+}
+html[dir="rtl"] .h-lg {
+  line-height: 1.28;
+}
+html[dir="rtl"] .h-md {
+  line-height: 1.4;
+}
+
+.lede {
+  font-size: clamp(1rem, 1.35vw, 1.1rem);
+  line-height: 1.95;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   DECORATION
+   ============================================================ */
+
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gold) 20%,
+    var(--gold) 80%,
+    transparent
+  );
+}
+
+.gold-text {
+  background: linear-gradient(
+    110deg,
+    var(--gold-deep) 0%,
+    var(--gold) 28%,
+    #f0e0bb 50%,
+    var(--gold) 72%,
+    var(--gold-deep) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -250% 0;
+  }
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+
+.glass {
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+}
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 1s var(--ease),
+    filter 0.9s var(--ease);
+  filter: blur(6px);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="left"] {
+  transform: translate3d(-36px, 0, 0);
+}
+[data-reveal="right"] {
+  transform: translate3d(36px, 0, 0);
+}
+[data-reveal="scale"] {
+  transform: scale(0.94);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes barDance {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes curtainUp {
+  to {
+    transform: translateY(-101%);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.anim-float {
+  animation: floatY 7s ease-in-out infinite;
+}
+.anim-fade-up {
+  animation: fadeUp 1s var(--ease) both;
+}
+.anim-fade-in {
+  animation: fadeIn 1.2s var(--ease) both;
+}
+
+/* Equalizer bars */
+.eq-bar {
+  transform-origin: center bottom;
+  animation: barDance 1.1s ease-in-out infinite;
+}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  overflow: hidden;
+  transition:
+    transform 0.45s var(--ease),
+    box-shadow 0.45s var(--ease),
+    color 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+  isolation: isolate;
+}
+
+html[dir="rtl"] .btn {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateY(101%);
+  transition: transform 0.55s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+.btn:hover::before {
+  transform: translateY(0);
+}
+
+.btn-solid {
+  background: var(--ink);
+  color: var(--ink-invert);
+  box-shadow: var(--shadow-sm);
+}
+.btn-solid::before {
+  background: linear-gradient(120deg, var(--gold-deep), var(--gold));
+}
+.btn-solid:hover {
+  color: #1d1419;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+}
+.btn-ghost::before {
+  background: var(--ink);
+}
+.btn-ghost:hover {
+  color: var(--ink-invert);
+  border-color: var(--ink);
+}
+
+.btn-on-dark {
+  border: 1px solid var(--line-invert);
+  color: var(--ink-invert);
+}
+.btn-on-dark::before {
+  background: linear-gradient(120deg, var(--gold), var(--gold-light));
+}
+.btn-on-dark:hover {
+  color: #1d1419;
+  border-color: transparent;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.6s var(--ease),
+    box-shadow 0.6s var(--ease),
+    border-color 0.6s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+/* Section frame */
+.section {
+  position: relative;
+  padding-block: clamp(5rem, 11vw, 9rem);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* Nav link underline */
+.navlink {
+  position: relative;
+  padding-block: 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color 0.35s var(--ease);
+  white-space: nowrap;
+}
+
+html[dir="rtl"] .navlink {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.95rem;
+}
+
+.navlink::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  /* Collapses toward the end of the line, grows from the start. */
+  transform-origin: 100% 50%;
+  transition: transform 0.5s var(--ease);
+}
+
+html[dir="rtl"] .navlink::after {
+  transform-origin: 0% 50%;
+}
+
+.navlink:hover,
+.navlink[data-active="true"] {
+  color: var(--ink);
+}
+
+.navlink:hover::after,
+.navlink[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: 0% 50%;
+}
+
+html[dir="rtl"] .navlink:hover::after,
+html[dir="rtl"] .navlink[data-active="true"]::after {
+  transform-origin: 100% 50%;
+}
+
+/* Header sitting over the dark hero, before the glass panel fades in. */
+.nav-dark .navlink {
+  color: var(--ink-invert-soft);
+}
+
+.nav-dark .navlink:hover,
+.nav-dark .navlink[data-active="true"] {
+  color: var(--gold-light);
+}
+
+.nav-dark .navlink::after {
+  background: var(--gold-light);
+}
+
+/* Image frame with gold offset */
+.framed {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.framed img,
+.framed video {
+  transition: transform 1.4s var(--ease);
+}
+
+.framed:hover img {
+  transform: scale(1.045);
+}
+
+/* ============================================================
+   MOTION PREFERENCES
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}

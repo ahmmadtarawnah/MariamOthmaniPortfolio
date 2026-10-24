@@ -70,6 +70,22 @@ export function Contact() {
                   </button>
                 </div>
 
+                <div className="mt-8">
+                  <span className="text-[0.66rem] uppercase tracking-[0.26em] text-[color:var(--gold-light)] rtl:text-[0.8rem] rtl:tracking-normal">
+                    {t.contact.phoneLabel}
+                  </span>
+                  <div className="mt-3">
+                    <a
+                      href={`tel:${SITE.phone}`}
+                      dir="ltr"
+                      className="latin group relative inline-block text-[clamp(1rem,2.6vw,1.55rem)] text-[color:var(--ink-invert)] transition-colors duration-400 hover:text-[color:var(--gold-light)]"
+                    >
+                      {SITE.phone}
+                      <span className="absolute inset-x-0 -bottom-1 h-px origin-left scale-x-100 bg-[color:var(--gold)] transition-transform duration-500 group-hover:scale-x-0" />
+                    </a>
+                  </div>
+                </div>
+
                 <p className="mt-5 max-w-md text-[0.86rem] leading-[1.9] text-[rgba(203,182,191,.75)]">
                   {t.contact.bookingNote}
                 </p>
@@ -101,6 +117,12 @@ export function Contact() {
                     label={isAr ? "البريد" : "Email"}
                     handle={isAr ? "إدارة الأعمال" : "Management"}
                     icon={<MailIcon />}
+                  />
+                  <SocialRow
+                    href={`tel:${SITE.phone}`}
+                    label={isAr ? "الهاتف" : "Phone"}
+                    handle={SITE.phone}
+                    icon={<PhoneIcon />}
                   />
                 </div>
 
@@ -190,6 +212,13 @@ function YoutubeIcon() {
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
       <rect x="2" y="5" width="20" height="14" rx="4.5" />
       <path d="M10 9.2v5.6l5-2.8-5-2.8Z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+function PhoneIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7.2 3.5h-.9A2.4 2.4 0 0 0 3.9 6a16.5 16.5 0 0 0 14.2 14.2 2.4 2.4 0 0 0 2.4-2.4v-.9a1.4 1.4 0 0 0-1.1-1.4l-3-.6a1.4 1.4 0 0 0-1.4.6l-.8 1.2a13 13 0 0 1-5.5-5.5l1.2-.8a1.4 1.4 0 0 0 .6-1.4l-.6-3a1.4 1.4 0 0 0-1.4-1.1Z" />
     </svg>
   );
 }

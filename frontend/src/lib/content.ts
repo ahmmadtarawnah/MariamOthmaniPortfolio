@@ -2,6 +2,7 @@ export type Lang = "ar" | "en";
 
 export const SITE = {
   email: "business@officialmariamothmani.com",
+  phone: "+962795590992",
   youtube: "https://www.youtube.com/@MariemOthmanii",
   instagram: "https://www.instagram.com/maryem_othmanii/",
   developer: "Ahmad Altarawneh",
@@ -99,6 +100,7 @@ type Dict = {
     title: string;
     text: string;
     emailLabel: string;
+    phoneLabel: string;
     bookingNote: string;
     followLabel: string;
     copy: string;
@@ -276,8 +278,9 @@ const ar: Dict = {
   contact: {
     eyebrow: "تواصل",
     title: "للحجوزات والأعمال",
-    text: "للحفلات والمهرجانات والمقابلات الصحفية والرعايات — التواصل حصراً عبر البريد الرسمي لإدارة الأعمال.",
+    text: "للحفلات والمهرجانات والمقابلات الصحفية والرعايات — التواصل عبر البريد الرسمي أو رقم إدارة الأعمال.",
     emailLabel: "البريد الرسمي",
+    phoneLabel: "رقم التواصل",
     bookingNote: "يُرجى تضمين التاريخ والمكان وطبيعة المشاركة في رسالتك.",
     followLabel: "تابعيها",
     copy: "نسخ البريد",
@@ -455,8 +458,9 @@ const en: Dict = {
   contact: {
     eyebrow: "Contact",
     title: "Booking & business",
-    text: "For concerts, festivals, press interviews and sponsorships — all enquiries go exclusively through the official management email.",
+    text: "For concerts, festivals, press interviews and sponsorships — all enquiries go through the official management email or phone number.",
     emailLabel: "Official email",
+    phoneLabel: "Contact number",
     bookingNote: "Please include the date, venue and nature of the engagement in your message.",
     followLabel: "Follow",
     copy: "Copy email",

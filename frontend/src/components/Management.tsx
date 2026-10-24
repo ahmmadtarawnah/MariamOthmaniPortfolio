@@ -77,6 +77,13 @@ export function Management() {
             >
               {SITE.email}
             </a>
+            <a
+              href={`tel:${SITE.phone}`}
+              dir="ltr"
+              className="latin text-sm text-[color:var(--ink-soft)] underline decoration-[color:var(--gold)] decoration-1 underline-offset-[6px] transition-colors duration-300 hover:text-[color:var(--gold-deep)]"
+            >
+              {SITE.phone}
+            </a>
           </Reveal>
         </div>
       </div>
